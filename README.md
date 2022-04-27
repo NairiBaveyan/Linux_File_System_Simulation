@@ -6,7 +6,7 @@
 ls 
 cd "DirName"
 cd ..
-mkdir "DirName"
+mkdir "DirName" \n
 rmdir "DirName"
 touch "FileName"
 rm    "FileName"

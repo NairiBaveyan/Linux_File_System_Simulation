@@ -16,8 +16,28 @@ jobs:
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: windows-latest
-
+    
+    # Setup Cygwin to run Linux-specific commands
     steps:
+    - name: Install Cygwin
+      uses: cygwin/cygwin-install-action@master
+      with:
+        platform: x64
+        packages: >-
+          flex,
+          bison,
+          awk,
+          sed,
+          wget,
+          make,
+          bash,
+          unzip,
+          python,
+          git,
+          gcc-g++,
+          tar,
+          gzip
+      
     # Setup MSbuild 
     - uses: microsoft/setup-msbuild@v1.1
       with:

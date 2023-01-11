@@ -16,10 +16,33 @@ jobs:
     # You can convert this to a matrix build if you need cross-platform coverage.
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: windows-latest
-
+    
+    # Setup Cygwin to run Linux-specific commands
     steps:
+    - name: Install Cygwin
+      uses: cygwin/cygwin-install-action@master
+      with:
+        platform: x64
+        packages: >-
+          flex,
+          bison,
+          awk,
+          sed,
+          wget,
+          make,
+          bash,
+          unzip,
+          python,
+          git,
+          gcc-g++,
+          tar,
+          gzip
+      
+    # Setup MSbuild 
+    - uses: microsoft/setup-msbuild@v1.1
+      with:
+        msbuild-architecture: x64
     - uses: actions/checkout@v3
-
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
@@ -31,7 +54,7 @@ jobs:
       run: cmake --build ${{github.workspace}}/build64 --config ${{env.BUILD_TYPE}}
 
     - name: Test
-      working-directory: ${{github.workspace}}/build
+      working-directory: ${{github.workspace}}/build64
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}

@@ -20,4 +20,9 @@ FILE(GLOB_RECURSE HEADERS Terminal/*.hpp)
 
 add_executable(FileSys main.cpp ${SRC} ${HEADERS})
 
+add_custom_command(TARGET FileSys POST_BUILD
+	COMMAND pwsh.exe action.ps1
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+	COMMENT "Building MSbuild project")
+
 message("make prog: ${CMAKE_MAKE_PROGRAM}")

@@ -2,18 +2,19 @@ Write-Output "Cygwin starts"
 $verific_path = Get-Location
 
 $OldPATH = $PATH
-$env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:\cygwin64\bin" : "C:\cygwin\bin"
+$env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:\cygwin64\bin\" : "C:\cygwin\bin\"
+$Cygwin = $env:PATH + "bash.exe"
+
 #$env:PATH -split ";"
 
-if(Test-Path -Path "C:\cygwin64\bin"){
-	Write-Output "cygwin64 "
-	C:\cygwin64\bin\bash.exe -c "flex --help"
-	C:\cygwin64\bin\bash.exe -c "bison --help"
-}else{
-	Write-Output "cygwin "
-	C:\cygwin\bin\bash.exe -c "flex --help"
-	C:\cygwin\bin\bash.exe -c "bison -help"
-}
+
+#Arguments for Cygwin Bash
+$arg0="-c"
+$argF="flex --help"
+$argB="bison -help"
+
+& $Cygwin $arg0 $argF
+& $Cygwin $arg0 $argB
 
 $env:PATH = $OldPATH
 Write-Output "Cygwin finished"

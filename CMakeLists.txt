@@ -11,6 +11,15 @@ endif()
 set(VERSION_MAJOR 0)
 set(VERSION_MINOR 0)
 
+execute_process(
+                COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
+                WORKING_DIRECTORY ${WORK_DIR}
+                RESULT_VARIABLE GIT_SUBMOD_RESULT
+                )
+	if  (NOT GIT_SUBMOD_RESULT EQUAL "0")
+                message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}, please checkout submodule manually")
+
+
 project(LinuxFileSystem)
 
 set(CMAKE_GENERATOR Ninja)

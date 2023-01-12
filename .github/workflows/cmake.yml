@@ -42,7 +42,6 @@ jobs:
           bash,
           unzip,
           python,
-          git,
           gcc-g++,
           tar,
           gzip

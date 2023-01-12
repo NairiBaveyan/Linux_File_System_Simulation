@@ -18,6 +18,7 @@ execute_process(
                 )
 	if  (NOT GIT_SUBMOD_RESULT EQUAL "0")
                 message(FATAL_ERROR "\"${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}\" failed with ${GIT_SUBMOD_RESULT}, please checkout submodule manually")
+	endif()
 
 
 project(LinuxFileSystem)

@@ -1,3 +1,5 @@
+
+<#
 Write-Output "Cygwin starts"
 $verific_path = Get-Location
 
@@ -36,12 +38,25 @@ Write-Output "Cygwin finished"
 
 
 Write-Output "abc action script start "
+#>
 
+$OldPATH = $PATH
+$env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:\cygwin64\bin\" : "C:\cygwin\bin\"
 
 sed -i 's#ABC_USE_PTHREADS\"#ABC_DONT_USE_PTHREADS\" /D \"_ALLOW_KEYWORD_MACROS=1\"#g' .\*.dsp
 awk 'BEGIN { del=0; } /# Begin Group "uap"/ { del=1; } /# End Group/ { if( del > 0 ) {del=0; next;} } del==0 {print;} ' .\abclib.dsp > .\tmp.dsp
 copy .\tmp.dsp .\abclib.dsp
+if($?){
+	cp .\tmp.dsp .\abclib.dsp
+}
 del .\tmp.dsp
+if($?){
+	rm .\tmp.dsp
+}
 unix2dos .\*.dsp
 <# executing MsDevShell #>
+$env:PATH = $OldPATH
 pwsh.exe .\function.ps1
+
+Write-Output "Cygwin finished"
+

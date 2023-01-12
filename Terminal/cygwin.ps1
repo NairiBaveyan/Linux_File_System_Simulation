@@ -6,8 +6,8 @@ $env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:\cygwin64\bin\" : "C:\cygwi
 $Cygwin = $env:PATH + "bash.exe"
 
 #$env:PATH -split ";"
-
-
+sed -help
+Write-Output "sed command works"
 #Arguments for Cygwin Bash
 $arg0="-c"
 $argF="flex --help"

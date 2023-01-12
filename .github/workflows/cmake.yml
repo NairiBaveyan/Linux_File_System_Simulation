@@ -31,9 +31,11 @@ jobs:
         platform: x64
         packages: >-
           flex,
+          unix2dos,
+          dos2unix,
           gawk,
           bison,
-          awk,
+          unzip,
           sed,
           wget,
           make,

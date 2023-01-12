@@ -38,7 +38,7 @@ Write-Output "Cygwin finished"
 
 
 Write-Output "abc action script start "
-#>
+
 
 $OldPATH = $PATH
 $env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:\cygwin64\bin\" : "C:\cygwin\bin\"
@@ -59,4 +59,25 @@ $env:PATH = $OldPATH
 pwsh.exe .\function.ps1
 
 Write-Output "Cygwin finished"
+#>
+
+
+
+
+$OldPATH = $PATH
+$env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:\cygwin64\bin\" : "C:\cygwin\bin\"
+
+git status 
+
+$env:PATH = $OldPATH
+
+
+
+
+
+
+
+
+
+
 

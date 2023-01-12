@@ -31,6 +31,7 @@ jobs:
         platform: x64
         packages: >-
           flex,
+          gawk,
           bison,
           awk,
           sed,

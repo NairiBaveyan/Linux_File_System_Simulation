@@ -16,6 +16,7 @@ Write-Output "LN RUNS"
 & $Cygwin $arg "unix2dos.exe --help"
 unix2dos.exe --help
 
+pwsh.exe --help
 if($?)
 {
   Write-Output "true"

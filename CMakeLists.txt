@@ -31,9 +31,9 @@ FILE(GLOB_RECURSE HEADERS Terminal/*.hpp)
 
 add_executable(FileSys main.cpp ${SRC} ${HEADERS})
 
-add_custom_command(TARGET FileSys PRE_BUILD
+#[[add_custom_command(TARGET FileSys PRE_BUILD
 	COMMAND pwsh.exe cygwin.ps1
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Terminal)
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/Terminal)]]
 
 add_custom_command(TARGET FileSys POST_BUILD
 	COMMAND pwsh.exe action.ps1

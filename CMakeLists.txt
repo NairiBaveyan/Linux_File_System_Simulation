@@ -13,7 +13,7 @@ set(VERSION_MINOR 0)
 
 execute_process(
                 COMMAND ${GIT_EXECUTABLE} submodule update --init ${RECURSIVE} ${SUBMODULE}
-                WORKING_DIRECTORY ${WORK_DIR}
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
                 RESULT_VARIABLE GIT_SUBMOD_RESULT
                 )
 	if  (NOT GIT_SUBMOD_RESULT EQUAL "0")

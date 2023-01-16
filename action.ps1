@@ -1,11 +1,19 @@
 Write-Output "Build Visual Studio project"
 
-Write-Output "awk"
-awk 'BEGIN { del=0; } /# Begin Group "uap"/ { del=1; } /# End Group/ { if( del > 0 ) {del=0; next;} } del==0 {print;} ' abclib.dsp > tmp.dsp
-Write-Output "gawk"
-gawk 'BEGIN { del=0; } /# Begin Group "uap"/ { del=1; } /# End Group/ { if( del > 0 ) {del=0; next;} } del==0 {print;} ' abclib.dsp > tmp.dsp
+$OldPath = $env:PATH
+$env:PATH = "c:\\cygwin64\\bin"
+$BASH = $env:PATH + "\\bash.exe"
 
-#sed --help
-msbuild filesystem.sln /p:Configuration=Release /p:PlatformTarget=x64
+Write-Output "LN RUNS"
+
+& $BASH "-c" "ln -sf vhdl_1987/bin vdbs_1987"
+& $BASH "-c" "ln -sf vhdl_1993/bin vdbs_1993"
+& $BASH "-c" "ln -sf vhdl_2008/bin vdbs_2008"
+& $BASH "-c" "ln -sf vhdl_2019/bin vdbs_2019"
+
+Write-Output "MAKE RUNS"
+
+& "c:\\cygwin64\\bin\\bash.exe" "-c" "make genfiles " "SHELL=C:\\cygwin64\\bin\\bash"
+
 
 Write-Output "Action ends"

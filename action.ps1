@@ -6,8 +6,8 @@ $BASH = $env:PATH + "\\bash.exe"
 
 Write-Output "LN RUNS"
 
-c:\\cygwin64\\bin\\bash -c "ln -sf vhdl_1993/bin vdbs_1993"
-$BASH -c "ln -sf vhdl_2008/bin vdbs_2008"
+bash -c "ln -sf vhdl_1993/bin vdbs_1993"
+bash.exe -c "ln -sf vhdl_2008/bin vdbs_2008"
 $BASH -c "ln -sf vhdl_2019/bin vdbs_2019"
 if($?)
 {

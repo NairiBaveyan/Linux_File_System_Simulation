@@ -56,9 +56,9 @@ if($?){
 unix2dos .\*.dsp
 <# executing MsDevShell #>
 $env:PATH = $OldPATH
-pwsh.exe .\function.ps1
 
-Write-Output "Cygwin finished"
+
+Write-Output "Cygwin finished  POWERSHELL WORKS"
 #>
 
 

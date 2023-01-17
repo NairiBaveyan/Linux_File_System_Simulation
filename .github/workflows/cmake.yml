@@ -41,7 +41,7 @@ jobs:
           make,
           bash,
           unzip,
-          python,
+          python3,
           gcc-g++,
           tar,
           gzip

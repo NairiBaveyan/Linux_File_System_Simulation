@@ -20,7 +20,8 @@ if($?)
 Write-Output "MAKE RUNS"
 
 & $Cygwin $arg "make genfiles " "SHELL=C:\\cygwin64\\bin\\bash"
-
+Write-Output "Python3..."
+& $Cygwin $arg "python3 --help"
 
 Write-Output "Action ends"
 $env:PATH = $OldPath

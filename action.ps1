@@ -13,6 +13,13 @@ Write-Output "LN RUNS"
 & $Cygwin $arg "ln -sf vhdl_2019/bin vdbs_2019"
 & $Cygwin $arg "wget -nc -O pmgen.py https://raw.githubusercontent.com/YosysHQ/yosys/master/passes/pmgen/pmgen.py"
 
+& $Cygwin $arg "unix2dos.exe --help"
+unix2dos.exe --help
+
+Write-Output "Test Output"
+./Terminal/cygwin.ps1
+
+pwsh.exe --help
 if($?)
 {
   Write-Output "true"

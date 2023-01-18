@@ -1,7 +1,9 @@
 Write-Output "Build Visual Studio project"
 
-$OldPATH = $PATH
+$OldPATH = $env:PATH
+Write-Output "OLD PATH = $env:PATH"
 $env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:\cygwin64\bin\" : "C:\cygwin\bin\"
+Write-Output
 $env:PATH -split ";"
 $Cygwin = $env:PATH + "bash.exe"
 $arg = "-c"

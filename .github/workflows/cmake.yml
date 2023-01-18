@@ -22,7 +22,7 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: bash
+        shell: pwsh
     
     steps:
     - uses: actions/checkout@v3

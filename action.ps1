@@ -5,7 +5,7 @@ Write-Output "OLD PATH = $oldPATH"
 Write-Output "env:PATH : $env:PATH"
 $env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:/cygwin64/bin/" : "C:/cygwin/bin/"
 $env:PATH -split ";"
-$Cygwin = $env:PATH + "bash.exe"
+$Cygwin = $env:PATH + "bash"
 $arg = "-c"
 
 Write-Output "LN RUNS"
@@ -29,7 +29,7 @@ if($?)
 }
 Write-Output "MAKE RUNS"
 
-& $Cygwin $arg "make genfiles" "SHELL=C:\\cygwin\\bin\\bash"
+& $Cygwin $arg "make genfiles" "SHELL=$Cygwin"
 Write-Output "Python3..."
 & $Cygwin $arg "python3 --help"
 

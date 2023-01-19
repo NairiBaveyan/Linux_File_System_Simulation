@@ -2,6 +2,8 @@
 $(info $(OS))
 ifeq ($(OS),Windows_NT)
 $(info $(SHELL))
+SHELL := /usr/bin/bash
+$(info $(SHELL))
 DIR := ${CURDIR}
 $(info "Current DIR = $(DIR)")
 CONFIG := cygwin

@@ -22,10 +22,13 @@ jobs:
     runs-on: windows-latest
     defaults:
       run:
-        shell: powershell
+        shell: pwsh
     
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Install OpenSSL
+      run: choco install openssl
     
     # Setup Cygwin to run Linux-specific commands
     - name: Install Cygwin

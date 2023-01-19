@@ -4,6 +4,7 @@ ifeq ($(OS),Windows_NT)
 $(info $(SHELL))
 SHELL := /usr/bin/bash
 $(info $(SHELL))
+$(info $(PATH))
 DIR := ${CURDIR}
 $(info "Current DIR = $(DIR)")
 CONFIG := cygwin
@@ -66,7 +67,7 @@ SANITIZER =
 
 PROGRAM_PREFIX :=
 ifeq ($(OS),Windows_NT)
-PATH = /cygdrive/c/cygwin64/bin
+export PATH=$PATH:/usr/bin/
 ENABLE_PLUGINS := 0
 ENABLE_TCL := 0
 EXE := .exe

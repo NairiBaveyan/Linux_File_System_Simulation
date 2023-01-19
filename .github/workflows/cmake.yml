@@ -27,9 +27,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Install OpenSSL
-      run: choco install openssl
-    
     # Setup Cygwin to run Linux-specific commands
     - name: Install Cygwin
       uses: cygwin/cygwin-install-action@master

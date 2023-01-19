@@ -2,6 +2,8 @@
 $(info $(OS))
 ifeq ($(OS),Windows_NT)
 $(info $(SHELL))
+DIR := ${CURDIR}
+$(info "Current DIR = $(DIR)")
 CONFIG := cygwin
 else
 CONFIG := clang

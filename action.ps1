@@ -1,11 +1,11 @@
 Write-Output "Build Visual Studio project"
 
-$OldPATH = $env:PATH
+
 Write-Output "OLD PATH = $oldPATH"
 Write-Output "env:PATH : $env:PATH"
-$env:PATH = (Test-Path -Path "C:\cygwin64\bin") ? "C:/cygwin64/bin/" : "C:/cygwin/bin/"
-$env:PATH -split ";"
-$Cygwin = $env:PATH + "bash"
+$CygBin = (Test-Path -Path "C:\cygwin64\bin") ? "C:/cygwin64/bin/" : "C:/cygwin/bin/"
+
+$Cygwin = $CygBin + "bash"
 $arg = "-c"
 
 Write-Output "LN RUNS"
@@ -29,10 +29,10 @@ if($?)
 }
 Write-Output "MAKE RUNS"
 
-& $Cygwin $arg "make genfiles" "SHELL=$Cygwin"
+& $Cygwin $arg "make genfiles SHELL=C:/cygwin/bin/bash"
 Write-Output "Python3..."
 & $Cygwin $arg "python3 --help"
 
 Write-Output "Action ends"
-$env:PATH = $OldPath
+
 Write-Output "env:PATH = $env:PATH"

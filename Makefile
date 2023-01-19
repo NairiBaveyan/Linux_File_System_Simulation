@@ -1,4 +1,5 @@
 
+$(info $(OS))
 ifeq ($(OS),Windows_NT)
 CONFIG := cygwin
 else

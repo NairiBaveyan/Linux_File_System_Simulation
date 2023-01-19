@@ -28,7 +28,7 @@ if($?)
 }
 Write-Output "MAKE RUNS"
 
-& $Cygwin $arg "make genfiles " "SHELL=C:\\cygwin64\\bin\\bash"
+& $Cygwin $arg "make genfiles " "SHELL=$Cygwin"
 Write-Output "Python3..."
 & $Cygwin $arg "python3 --help"
 

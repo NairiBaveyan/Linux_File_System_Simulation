@@ -1,6 +1,7 @@
 
 $(info $(OS))
 ifeq ($(OS),Windows_NT)
+$(info $(SHELL))
 CONFIG := cygwin
 else
 CONFIG := clang
